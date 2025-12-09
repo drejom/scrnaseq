@@ -228,7 +228,7 @@ workflow SCRNASEQ {
                 parsed_meta.options['create-bam'] = params.save_align_intermeds  // force bam creation -- param required by cellranger multi
                 if (meta.expected_cells) { parsed_meta.options['expected-cells'] = meta.expected_cells }
                 if (meta.force_cells) { parsed_meta.options['force-cells'] = meta.force_cells }
-                if (meta.include_introns != null) { parsed_meta.options['include-introns'] = meta.include_introns }
+                // Note: include-introns defaults to true in Cell Ranger 7+, no need to override
             }
 
             // add CMO options from samplesheet for cellranger multi demultiplexing

@@ -64,11 +64,6 @@
                 "errorMessage": "force_cells must be a positive integer",
                 "meta": ["force_cells"],
                 "description": "Force Cell Ranger to use this number of cells instead of auto-detection. Only applies to gex feature_type rows."
-            },
-            "include_introns": {
-                "type": "boolean",
-                "meta": ["include_introns"],
-                "description": "Include intronic reads in gene expression quantification. Useful for single-nuclei RNA-seq. Only applies to gex feature_type rows."
             }
         },
         "required": ["sample", "fastq_1", "fastq_2"]
