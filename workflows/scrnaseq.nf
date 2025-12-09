@@ -227,6 +227,15 @@ workflow SCRNASEQ {
             if (meta.feature_type.toString() == 'gex') {
                 parsed_meta.options['create-bam'] = params.save_align_intermeds  // force bam creation -- param required by cellranger multi
                 if (meta.expected_cells) { parsed_meta.options['expected-cells'] = meta.expected_cells }
+                if (meta.force_cells) { parsed_meta.options['force-cells'] = meta.force_cells }
+                if (meta.include_introns != null) { parsed_meta.options['include-introns'] = meta.include_introns }
+            }
+
+            // add CMO options from samplesheet for cellranger multi demultiplexing
+            if (meta.feature_type.toString() == 'cmo') {
+                if (meta.min_assignment_confidence) {
+                    parsed_meta.options['min-assignment-confidence'] = meta.min_assignment_confidence
+                }
             }
 
             [ parsed_meta.id , parsed_meta ]
